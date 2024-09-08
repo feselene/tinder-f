@@ -4,7 +4,7 @@ import { View, Text, TextInput, Button, StyleSheet} from 'react-native';
 const SignupScreen: React.FC = ({navigation}: any) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [username, setUsername] = useState<string>('');
+  const [name, setName] = useState<string>('');
 
 //   const handleSignup = () => {
 //     if (!email.includes('@')) {
@@ -15,13 +15,13 @@ const SignupScreen: React.FC = ({navigation}: any) => {
 //       Alert.alert('Invalid Password', 'Password must be at least 6 characters long.');
 //       return;
 //     }
-//     if (username.trim() === '') {
-//       Alert.alert('Invalid Username', 'Username cannot be empty.');
+//     if (name.trim() === '') {
+//       Alert.alert('Invalid name', 'Name cannot be empty.');
 //       return;
 //     }
 
 //     // Signup logic goes here
-//     console.log('Email:', email, 'Password:', password, 'Username:', username);
+//     console.log('Email:', email, 'Password:', password, 'Name:', name);
 //   };
 
   return (
@@ -47,9 +47,9 @@ const SignupScreen: React.FC = ({navigation}: any) => {
 
       <TextInput
         style={styles.input}
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
+        placeholder="Name"
+        value={name}
+        onChangeText={setName}
       />
 
       <Button
