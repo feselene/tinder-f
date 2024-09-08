@@ -1,28 +1,34 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet} from 'react-native';
+import axios from 'axios';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-const SignupScreen: React.FC = ({navigation}: any) => {
+const SignupScreen: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [name, setName] = useState<string>('');
 
-//   const handleSignup = () => {
-//     if (!email.includes('@')) {
-//       Alert.alert('Invalid Email', 'Please enter a valid email address.');
-//       return;
-//     }
-//     if (password.length < 6) {
-//       Alert.alert('Invalid Password', 'Password must be at least 6 characters long.');
-//       return;
-//     }
-//     if (name.trim() === '') {
-//       Alert.alert('Invalid name', 'Name cannot be empty.');
-//       return;
-//     }
-
-//     // Signup logic goes here
-//     console.log('Email:', email, 'Password:', password, 'Name:', name);
-//   };
+  const handleSignup = async() => {
+    try {
+      const response = await axios.post('http://10.0.2.2:5000/api/auth/signup', {
+        name,
+        email,
+        password,
+      });
+      console.log('Signup successful!', response);
+    }
+    catch (err: any) {
+      if (err.response) {
+        console.error('Server responded with an error:', err.response.data);
+      }
+      else if (err.request) {
+        console.error('No response received from server:', err.request);
+      }
+      else {
+        console.error(err);
+        console.error('Error during signup:', err.response);
+      }
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -52,12 +58,7 @@ const SignupScreen: React.FC = ({navigation}: any) => {
         onChangeText={setName}
       />
 
-      <Button
-      title="Go to Jane's profile"
-      onPress={() =>
-        navigation.navigate('Home')
-      }
-    />
+      <Button title="Signup" onPress={handleSignup}/>
     </View>
   );
 };
