@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
-const SignupScreen: React.FC = () => {
+const SignupScreen: React.FC = ({navigation}: any) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [name, setName] = useState<string>('');
@@ -15,6 +15,10 @@ const SignupScreen: React.FC = () => {
         password,
       });
       console.log('Signup successful!', response);
+
+      Alert.alert('Success', 'Message!', [
+        { text: 'OK', onPress: () => navigation.navigate('Home') },
+      ]);
     }
     catch (err: any) {
       if (err.response) {
