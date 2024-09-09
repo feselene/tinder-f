@@ -7,6 +7,10 @@ const SignupScreen: React.FC = ({navigation}: any) => {
   const [password, setPassword] = useState<string>('');
   const [name, setName] = useState<string>('');
 
+  const navigateToLogin = () => {
+    navigation.navigate('Login');
+  }
+
   const handleSignup = async() => {
     try {
       const response = await axios.post('http://10.0.2.2:5000/api/auth/signup', {
@@ -63,6 +67,9 @@ const SignupScreen: React.FC = ({navigation}: any) => {
       />
 
       <Button title="Signup" onPress={handleSignup}/>
+      <View style={styles.goToLoginButton}>
+        <Button title="Go To Login" onPress={navigateToLogin}/>
+      </View>
     </View>
   );
 };
@@ -86,6 +93,9 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingHorizontal: 10,
     borderRadius: 5,
+  },
+  goToLoginButton: {
+    marginTop: 20,
   },
 });
 

@@ -1,10 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 
-const HomeScreen: React.FC = () => {
+const HomeScreen = ({ navigation }: any) => {
+  const handleLogout = () => {
+    navigation.navigate('Login'); // Navigate to Login screen on logout
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to the Home Screen!</Text>
+      <View>
+        <Button title="Logout" onPress={handleLogout} />
+      </View>
     </View>
   );
 };

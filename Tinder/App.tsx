@@ -12,19 +12,19 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Login"
-          component={LoginScreen} // Add SignupScreen here
-          options={{ title: 'Login' }}
-        />
-        <Stack.Screen
           name="Signup"
-          component={SignupScreen} // Add SignupScreen here
+          component={SignupScreen}
           options={{ title: 'Sign Up' }}
         />
         <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ title: 'Login'}}
+        />
+        <Stack.Screen
           name="Home"
-          component={HomeScreen} // Use HomeScreen here
-          options={{ title: 'Welcome' }}
+          component={HomeScreen}
+          options={{ title: 'Welcome', headerBackVisible: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
