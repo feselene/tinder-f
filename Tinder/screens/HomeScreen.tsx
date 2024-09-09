@@ -3,7 +3,7 @@ import { View, StyleSheet, Button } from 'react-native';
 
 const HomeScreen = ({ navigation }: any) => {
   const handleLogout = () => {
-    navigation.navigate('Login'); // Navigate to Login screen on logout
+    navigation.navigate('Login');
   };
 
   return (
